@@ -27,13 +27,14 @@ int	ft_printf(const char *string, ...)
 
 	if (!(format = ft_memalloc(sizeof(t_format))))
 		ft_putendl_fd("Error in allocating memory.", 2);
+	check_for_format_specifier(format, (char *)string);
 	va_start(ap, string);
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		printf("%s\n", va_arg(ap, char *));
 	}
 	va_end(ap);
-	check_for_format_specifier(format, "hello I'm testing three %++#f\n");
+
 	return (1);
 }
 
@@ -44,6 +45,6 @@ int	main(void)
 
 	i = 5;
 	str = "21";
-	ft_printf("hello there", "testing", "for", "varying", "hello!");
+	ft_printf("hello I'm testing three %++#20f\n");
 	return (0);
 }

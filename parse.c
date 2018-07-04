@@ -56,18 +56,23 @@ int			check_for_format_specifier(t_format *format, char *string)
 	specifiers = "sSpdDioOuUxXcC";
 	i = 0;
 	n = 0;
+	//change to pointers!
 	while (string[i])
 	{
 		if (string[i] == '%')
 		{
 			i++;
 			format->flag = parse_flag(string + i);
+			format->width = ft_atoi_flags(string + i);
+			// format->precision = parse_precision(string + i);
+			// format->length = ft_atoi(string);
+			// format->specifier = parse_specifier(string);
+			printf("format->width: %d\n", format->width);
 			parse_specifier(format, string[i + 1]);
 			if (ft_strchr(specifiers, string[i + 1]))
 				n++;
 		}
 		i++;
 	}
-	printf("%d\n", n);
 	return (0);
 }
