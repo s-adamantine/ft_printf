@@ -21,7 +21,7 @@ SUBLIB = libft/libft.a
 LIBNAME1 = libft.a
 LIBNAME2 = libmlx.a
 
-SRC = main.c parse.c
+SRC = main.c parse.c parse_helpers.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -53,4 +53,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean re 
+.PHONY: all libft clean fclean re

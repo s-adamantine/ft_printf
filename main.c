@@ -12,22 +12,38 @@
 
 #include "printf.h"
 
+void	error(int i)
+{
+	if (i == 1)
+		ft_putendl_fd("Error: can't initialize space in memory.\n", 2);
+}
+
+// need to create a function initializing all the formats
+// need to instantiate a list of formats
 int	ft_printf(const char *string, ...)
 {
-	va_list	ap;
+	va_list		ap;
+	t_format	*format;
 
+	if (!(format = ft_memalloc(sizeof(t_format))))
+		ft_putendl_fd("Error in allocating memory.", 2);
 	va_start(ap, string);
 	for (int i = 0; i < 4; i++)
 	{
 		printf("%s\n", va_arg(ap, char *));
 	}
 	va_end(ap);
-	check_for_format_specifier("testing %s this %2f %Sd %3e %%%%\n");
+	check_for_format_specifier(format, "hello I'm testing three %++#f\n");
 	return (1);
 }
 
 int	main(void)
 {
+	int	i;
+	char	*str;
+
+	i = 5;
+	str = "21";
 	ft_printf("hello there", "testing", "for", "varying", "hello!");
 	return (0);
 }

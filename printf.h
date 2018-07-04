@@ -16,9 +16,23 @@
 # include "libft.h"
 # include <stdio.h> //get rid
 
-typedef struct	s_args
+typedef struct	s_flag
+{
+	int			minus;
+	int			plus;
+	int			hash;
+	int			zero;
+}				t_flag;
+
+typedef struct	s_format
 {
 	int			n;
-}				t_args;
+	int			width;
+	int			precision;
+	t_flag		*flag;
+	char		specifier;
+}				t_format;
 
-int		check_for_format_specifier(const char *string);
+int		check_for_format_specifier(t_format *format, char *string);
+int		ft_atoi_flags(const char *str);
+void	error(int i);
