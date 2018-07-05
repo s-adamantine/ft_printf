@@ -26,7 +26,6 @@ typedef struct	s_flag
 
 typedef struct	s_format
 {
-	int			n;
 	int			width;
 	int			precision;
 	t_flag		*flag;

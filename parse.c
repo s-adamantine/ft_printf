@@ -12,25 +12,20 @@
 
 #include "printf.h"
 
-//can have more than one flag
-//also needs to keep going up
-static t_flag	*parse_flag(char *str)
+static char		*parse_flag(t_format *format, char *str)
 {
 	char	*flags;
-	t_flag	*flag;
 
 	flags = "+-#0";
-	if (!(flag = ft_memalloc(sizeof(t_flag))))
-		error(1);
 	while (ft_strchr(flags, *str))
 	{
-		(*str == '-') ? flag->minus = 1 : 0;
-		(*str == '+') ? flag->plus = 1 : 0;
-		(*str == '#') ? flag->hash = 1 : 0;
-		(*str == '0') ? flag->zero = 1 : 0;
+		(*str == '-') ? format->flag->minus = 1 : 0;
+		(*str == '+') ? format->flag->plus = 1 : 0;
+		(*str == '#') ? format->flag->hash = 1 : 0;
+		(*str == '0') ? format->flag->zero = 1 : 0;
 		str++;
 	}
-	return (flag);
+	return (str);
 }
 
 static void		parse_length(t_format *format, char *str)
@@ -52,15 +47,19 @@ static void		parse_length(t_format *format, char *str)
 // 		format->specifier = c;
 // }
 
+//need to grab a tab so it doesn't check for the entire string
 static int		parse_precision(char *str)
 {
+	if (ft_strchr(str, '.') == 0)
+		return (0);
 	while (*str && *str != '.')
 		str++;
 	return (ft_atoi(++str));
 }
 
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
-// initialize a new fo anything.
+// initialize a new format.
+// need to create a function that grabs one format specifier
 int			check_for_format_specifier(t_format *format, char *string)
 {
 	int	n;
@@ -74,8 +73,8 @@ int			check_for_format_specifier(t_format *format, char *string)
 		if (*string == '%')
 		{
 			string++;
-			format->flag = parse_flag(string);
-			format->width = ft_atoi_flags(string);
+			string = parse_flag(format, string);
+			format->width = ft_atoi(string);
 			format->precision = parse_precision(string);
 			parse_length(format, string);
 			// parse_specifier(format, string);

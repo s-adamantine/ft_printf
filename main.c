@@ -15,7 +15,26 @@
 void	error(int i)
 {
 	if (i == 1)
-		ft_putendl_fd("Error: can't initialize space in memory.\n", 2);
+		ft_putendl_fd("Error: memory not allocated.\n", 2);
+}
+
+static t_format	*init_format(void)
+{
+	t_format	*format;
+
+	if (!(format = ft_memalloc(sizeof(t_format))))
+		error(1);
+	if (!(format->flag = ft_memalloc(sizeof(t_flag))))
+		error(1);
+	format->flag->plus = 0;
+	format->flag->minus = 0;
+	format->flag->hash = 0;
+	format->flag->zero = 0;
+	format->width = 0;
+	format->precision = 0;
+	format->specifier = '\0';
+	format->length = '\0';
+	return (format);
 }
 
 // need to create a function initializing all the formats
@@ -25,8 +44,7 @@ int	ft_printf(const char *string, ...)
 	// va_list		ap;
 	t_format	*format;
 
-	if (!(format = ft_memalloc(sizeof(t_format))))
-		ft_putendl_fd("Error in allocating memory.", 2);
+	format = init_format();
 	check_for_format_specifier(format, (char *)string);
 	// va_start(ap, string);
 	// for (int i = 0; i < 1; i++)
@@ -45,6 +63,6 @@ int	main(void)
 
 	i = 5;
 	str = "21";
-	ft_printf("hello I'm testing three %++#20.3jf\n");
+	ft_printf("hello I'm testing three %20.3jf\n");
 	return (0);
 }
