@@ -21,7 +21,7 @@ SUBLIB = libft/libft.a
 LIBNAME1 = libft.a
 LIBNAME2 = libmlx.a
 
-SRC = main.c parse.c parse_helpers.c
+SRC = main.c parse.c testing_helpers.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,11 +43,11 @@ $(NAME): libft $(OBJ)
 	@$(CC) $(LIBS) $(FRAMEWORK) -o $(NAME)
 
 clean:
-	@$(MAKE) clean -C $(SUBLIB1_DIR)
+	@$(MAKE) clean -C $(SUBLIB_DIR)
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@$(MAKE) fclean -C $(SUBLIB1_DIR)
+	@$(MAKE) fclean -C $(SUBLIB_DIR)
 	@rm -rf $(NAME)
 	@rm -rf $(LIB)
 
