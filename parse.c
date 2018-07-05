@@ -28,33 +28,44 @@ static char		*parse_flag(t_format *format, char *str)
 	return (str);
 }
 
-static void		parse_length(t_format *format, char *str)
+static char		*parse_length(t_format *format, char *str)
 {
-	if (ft_strncmp(str, "hh", 3))
+	if (ft_strncmp(str, "hh", 2) == 0)
+	{
 		format->length = 'H';
-	else if (ft_strncmp(str, "ll", 2))
+		return (str + 2);
+	}
+	if (ft_strncmp(str, "ll", 2) == 0)
+	{
 		format->length = 'L';
-	else if (*str == 'h' || *str == 'l' || *str == 'j' || *str == 'z')
+		return (str + 2);
+	}
+	if (*str == 'h' || *str == 'l' || *str == 'j' || *str == 'z')
+	{
 		format->length = *str;
+		return (str + 1);
+	}
+	return (str);
 }
 
-// static void		parse_specifier(t_format *format, char c)
-// {
-// 	char	*specifiers;
-//
-// 	specifiers = "sSpdDioOuUxXcC";
-// 	if (ft_strchr(specifiers, c))
-// 		format->specifier = c;
-// }
-
 //need to grab a tab so it doesn't check for the entire string
-static int		parse_precision(char *str)
+static char		*parse_precision(t_format *format, char *str)
 {
 	if (ft_strchr(str, '.') == 0)
-		return (0);
+		return (str);
 	while (*str && *str != '.')
 		str++;
-	return (ft_atoi(++str));
+	format->precision = ft_atoi(++str);
+	return (str + ft_numlen(format->precision));
+}
+
+static void		parse_specifier(t_format *format, char c)
+{
+	char	*specifiers;
+
+	specifiers = "sSpdDioOuUxXcCfF";
+	if (ft_strchr(specifiers, c))
+		format->specifier = c;
 }
 
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
@@ -62,12 +73,6 @@ static int		parse_precision(char *str)
 // need to create a function that grabs one format specifier
 int			check_for_format_specifier(t_format *format, char *string)
 {
-	int	n;
-	char	*specifiers;
-
-	specifiers = "sSpdDioOuUxXcC";
-	n = 0;
-	//change to pointers!
 	while (*string)
 	{
 		if (*string == '%')
@@ -75,12 +80,9 @@ int			check_for_format_specifier(t_format *format, char *string)
 			string++;
 			string = parse_flag(format, string);
 			format->width = ft_atoi(string);
-			format->precision = parse_precision(string);
-			parse_length(format, string);
-			// parse_specifier(format, string);
-			// parse_specifier(format, string[i + 1]);
-			// if (ft_strchr(specifiers, string[i + 1]))
-			// 	n++;
+			string = parse_precision(format, string);
+			string = parse_length(format, string);
+			parse_specifier(format, *string);
 		}
 		string++;
 	}
