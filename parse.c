@@ -48,14 +48,18 @@ static char		*parse_length(t_format *format, char *str)
 	return (str);
 }
 
-//need to grab a tab so it doesn't check for the entire string
 static char		*parse_precision(t_format *format, char *str)
 {
+	char	*specifiers;
+
+	specifiers = "sSpdDioOuUxXcCfF";
 	if (ft_strchr(str, '.') == 0)
 		return (str);
-	while (*str && *str != '.')
+	while (*str && *str != '.' && !ft_strchr(specifiers, *str))
 		str++;
 	format->precision = ft_atoi(++str);
+	if (format->precision == 0)
+		return (str);
 	return (str + ft_numlen(format->precision));
 }
 
@@ -122,6 +126,6 @@ int			check_for_format_specifier(t_format *format, char *string)
 		}
 		string++;
 	}
-	// print_format(format);
+	print_format(format);
 	return (0);
 }
