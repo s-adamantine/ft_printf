@@ -31,9 +31,12 @@ typedef struct	s_format
 	int			precision;
 	t_flag		*flag;
 	char		specifier;
-	char		**length;
+	char		length;
 }				t_format;
 
 int		check_for_format_specifier(t_format *format, char *string);
 int		ft_atoi_flags(const char *str);
 void	error(int i);
+
+
+void	print_format(t_format *format);

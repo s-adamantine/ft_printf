@@ -22,18 +22,18 @@ void	error(int i)
 // need to instantiate a list of formats
 int	ft_printf(const char *string, ...)
 {
-	va_list		ap;
+	// va_list		ap;
 	t_format	*format;
 
 	if (!(format = ft_memalloc(sizeof(t_format))))
 		ft_putendl_fd("Error in allocating memory.", 2);
 	check_for_format_specifier(format, (char *)string);
-	va_start(ap, string);
-	for (int i = 0; i < 1; i++)
-	{
-		printf("%s\n", va_arg(ap, char *));
-	}
-	va_end(ap);
+	// va_start(ap, string);
+	// for (int i = 0; i < 1; i++)
+	// {
+	// 	printf("%s\n", va_arg(ap, char *));
+	// }
+	// va_end(ap);
 
 	return (1);
 }
