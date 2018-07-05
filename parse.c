@@ -68,6 +68,38 @@ static void		parse_specifier(t_format *format, char c)
 		format->specifier = c;
 }
 
+/*
+** A valid format has a valid optional flag, a series of numbers with or
+** without a full stop (for precision), a valid optional length, and a valid
+** specifier.
+*/
+static int		valid_format(char *str)
+{
+	char	*flags;
+	char	*specifiers;
+	char	*lengths;
+
+	flags = "+-#0";
+	specifiers = "sSpdDioOuUxXcCfF";
+	lengths = "hljz";
+	if (!ft_isdigit(*str) && !ft_strchr(flags, *str) && *str != '.' &&
+		!ft_strchr(specifiers, *str) && !ft_strchr(lengths, *str))
+		return (0);
+	while (ft_strchr(flags, *str))
+		str++;
+	while (ft_isdigit(*str))
+		str++;
+	*str == '.' ? str++ : 0;
+	while (ft_isdigit(*str))
+		str++;
+	if (ft_strncmp(str, "hh", 2) == 0 || ft_strncmp(str, "ll", 2) == 0)
+		str += 2;
+	ft_strchr(lengths, *str) ? str++ : 0;
+	if (!ft_strchr(specifiers, *str))
+		return (0);
+	return (1);
+}
+
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
 // initialize a new format.
 // need to create a function that grabs one format specifier
@@ -78,14 +110,18 @@ int			check_for_format_specifier(t_format *format, char *string)
 		if (*string == '%')
 		{
 			string++;
-			string = parse_flag(format, string);
-			format->width = ft_atoi(string);
-			string = parse_precision(format, string);
-			string = parse_length(format, string);
-			parse_specifier(format, *string);
+			if (valid_format(string))
+			{
+				printf("we found a valid format!\n");
+				string = parse_flag(format, string);
+				format->width = ft_atoi(string);
+				string = parse_precision(format, string);
+				string = parse_length(format, string);
+				parse_specifier(format, *string);
+			}
 		}
 		string++;
 	}
-	print_format(format);
+	// print_format(format);
 	return (0);
 }
