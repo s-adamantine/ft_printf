@@ -45,6 +45,6 @@ int	main(void)
 
 	i = 5;
 	str = "21";
-	ft_printf("hello I'm testing three %++#20f\n");
+	ft_printf("hello I'm testing three %++#20.3jf\n");
 	return (0);
 }

@@ -36,6 +36,16 @@ static t_flag	*parse_flag(char *str)
 	return (flag);
 }
 
+static void		parse_length(t_format *format, char *str)
+{
+	if (ft_strncmp(str, "hh", 3))
+		format->length = "hh";
+	else if (ft_strncmp(str, "ll", 2))
+		format->length = "ll";
+	else if (*str == 'h' || *str == 'l' || *str == 'j' || *str == 'z')
+		ft_strncpy(format->length, str, 1);
+}
+
 static void		parse_specifier(t_format *format, char c)
 {
 	char	*specifiers;
@@ -43,6 +53,13 @@ static void		parse_specifier(t_format *format, char c)
 	specifiers = "sSpdDioOuUxXcC";
 	if (ft_strchr(specifiers, c))
 		format->specifier = c;
+}
+
+static int		parse_precision(char *str)
+{
+	while (*str && *str != '.')
+		str++;
+	return (ft_atoi(++str));
 }
 
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
@@ -64,10 +81,12 @@ int			check_for_format_specifier(t_format *format, char *string)
 			i++;
 			format->flag = parse_flag(string + i);
 			format->width = ft_atoi_flags(string + i);
-			// format->precision = parse_precision(string + i);
-			// format->length = ft_atoi(string);
-			// format->specifier = parse_specifier(string);
+			format->precision = parse_precision(string + i);
+			parse_length(format, string);
+			// parse_specifier(format, string);
 			printf("format->width: %d\n", format->width);
+			printf("format->precision: %d\n", format->precision);
+			printf("format->length: %s\n", format->length);
 			parse_specifier(format, string[i + 1]);
 			if (ft_strchr(specifiers, string[i + 1]))
 				n++;

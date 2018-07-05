@@ -31,6 +31,7 @@ typedef struct	s_format
 	int			precision;
 	t_flag		*flag;
 	char		specifier;
+	char		**length;
 }				t_format;
 
 int		check_for_format_specifier(t_format *format, char *string);
