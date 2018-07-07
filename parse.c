@@ -71,13 +71,14 @@ static char		*parse_precision(t_format *format, char *str)
 	return (str + ft_numlen(format->precision));
 }
 
-static void		parse_specifier(t_format *format, char c)
+static char		*parse_specifier(t_format *format, char *str)
 {
 	char	*specifiers;
 
 	specifiers = "sSpdDioOuUxXcCfF";
-	if (ft_strchr(specifiers, c))
-		format->specifier = c;
+	if (ft_strchr(specifiers, *str))
+		format->specifier = *str;
+	return (str + 1);
 }
 
 /*
@@ -132,11 +133,12 @@ int			parse_input(t_list **lst, char *string)
 				string = parse_width(format, string);
 				string = parse_precision(format, string);
 				string = parse_length(format, string);
-				parse_specifier(format, *string);
+				string = parse_specifier(format, string);
 				newlink = ft_lstnew(format, sizeof(format));
 				ft_lstappend(lst, newlink);
 			}
 		}
+		ft_putchar(*string);
 		string++;
 	}
 	return (0);
