@@ -18,7 +18,7 @@ void	error(int i)
 		ft_putendl_fd("Error: memory not allocated.\n", 2);
 }
 
-static t_format	*init_format(void)
+t_format	*init_format(void)
 {
 	t_format	*format;
 
@@ -32,8 +32,8 @@ static t_format	*init_format(void)
 	format->flag->zero = 0;
 	format->width = 0;
 	format->precision = 0;
-	format->specifier = '\0';
-	format->length = '\0';
+	format->specifier = '0';
+	format->length = '0';
 	return (format);
 }
 
@@ -42,10 +42,15 @@ static t_format	*init_format(void)
 int	ft_printf(const char *string, ...)
 {
 	// va_list		ap;
-	t_format	*format;
+	t_list		*lst;
 
-	format = init_format();
-	check_for_format_specifier(format, (char *)string);
+	lst = ft_lstnew(NULL, 0);
+	parse_input(&lst, (char *)string);
+	while (lst)
+	{
+		print_format(lst->content);
+		lst = lst->next;
+	}
 	// va_start(ap, string);
 	// for (int i = 0; i < 1; i++)
 	// {
@@ -63,6 +68,7 @@ int	main(void)
 
 	i = 5;
 	str = "21";
-	ft_printf("hello I'm testing three %20.3jf\n");
+	printf("testing original printf: %.d\n", i);
+	ft_printf("hello I'm testing three %2.d and %+3hhf\n");
 	return (0);
 }

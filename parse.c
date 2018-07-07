@@ -28,6 +28,14 @@ static char		*parse_flag(t_format *format, char *str)
 	return (str);
 }
 
+static char		*parse_width(t_format *format, char *str)
+{
+	format->width = ft_atoi(str);
+	if (format->width == 0)
+		return (str);
+	return (str + ft_numlen(format->width));
+}
+
 static char		*parse_length(t_format *format, char *str)
 {
 	if (ft_strncmp(str, "hh", 2) == 0)
@@ -107,8 +115,11 @@ static int		valid_format(char *str)
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
 // initialize a new format.
 // need to create a function that grabs one format specifier
-int			check_for_format_specifier(t_format *format, char *string)
+int			parse_input(t_list **lst, char *string)
 {
+	t_list		*newlink;
+	t_format	*format;
+
 	while (*string)
 	{
 		if (*string == '%')
@@ -116,16 +127,17 @@ int			check_for_format_specifier(t_format *format, char *string)
 			string++;
 			if (valid_format(string))
 			{
-				printf("we found a valid format!\n");
+				format = init_format();
 				string = parse_flag(format, string);
-				format->width = ft_atoi(string);
+				string = parse_width(format, string);
 				string = parse_precision(format, string);
 				string = parse_length(format, string);
 				parse_specifier(format, *string);
+				newlink = ft_lstnew(format, sizeof(format));
+				ft_lstappend(lst, newlink);
 			}
 		}
 		string++;
 	}
-	print_format(format);
 	return (0);
 }

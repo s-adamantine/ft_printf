@@ -33,9 +33,8 @@ typedef struct	s_format
 	char		length;
 }				t_format;
 
-int		check_for_format_specifier(t_format *format, char *string);
-int		ft_atoi_flags(const char *str);
-void	error(int i);
-
+int			parse_input(t_list **lst, char *string);
+void		error(int i);
+t_format	*init_format(void);
 
 void	print_format(t_format *format);
