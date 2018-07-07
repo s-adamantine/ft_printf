@@ -16,6 +16,12 @@
 # include "libft.h"
 # include <stdio.h> //get rid
 
+typedef enum	e_type
+{
+	INT,
+	STRING
+}				t_type;
+
 typedef struct	s_flag
 {
 	int			minus;
@@ -31,6 +37,8 @@ typedef struct	s_format
 	t_flag		*flag;
 	char		specifier;
 	char		length;
+	void		*value;
+	t_type		type;
 }				t_format;
 
 int			parse_input(t_list **lst, char *string);
@@ -38,3 +46,4 @@ void		error(int i);
 t_format	*init_format(void);
 
 void	print_format(t_format *format);
+void	handle_content(va_list ap, t_list *lst);

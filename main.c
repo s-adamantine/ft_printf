@@ -34,6 +34,8 @@ t_format	*init_format(void)
 	format->precision = 0;
 	format->specifier = '0';
 	format->length = '0';
+	format->value = NULL;
+	format->type = 0;
 	return (format);
 }
 
@@ -41,23 +43,19 @@ t_format	*init_format(void)
 // need to instantiate a list of formats
 int	ft_printf(const char *string, ...)
 {
-	// va_list		ap;
+	va_list		ap;
 	t_list		*lst;
 
 	lst = ft_lstnew(NULL, 0);
 	parse_input(&lst, (char *)string);
+	va_start(ap, string);
 	while (lst)
 	{
-		print_format(lst->content);
+		// print_format(lst->content);
+		handle_content(ap, lst);
 		lst = lst->next;
 	}
-	// va_start(ap, string);
-	// for (int i = 0; i < 1; i++)
-	// {
-	// 	printf("%s\n", va_arg(ap, char *));
-	// }
-	// va_end(ap);
-
+	va_end(ap);
 	return (1);
 }
 
@@ -69,6 +67,6 @@ int	main(void)
 	i = 5;
 	str = "21";
 	printf("testing original printf: %.d\n", i);
-	ft_printf("hello I'm testing three %2.d and %+3hhf\n");
+	ft_printf("hello I'm testing three %2.d and %+3hhf\n", 23, 2.5);
 	return (0);
 }

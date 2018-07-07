@@ -21,7 +21,8 @@ SUBLIB = libft/libft.a
 LIBNAME1 = libft.a
 LIBNAME2 = libmlx.a
 
-SRC = main.c parse.c testing_helpers.c
+SRC = main.c parse.c testing_helpers.c\
+	handle_content.c\
 
 OBJ = $(SRC:.c=.o)
 
