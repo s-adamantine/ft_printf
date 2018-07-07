@@ -12,17 +12,14 @@
 
 #include "printf.h"
 
-static void	handle_integer(t_format *format, int value)
-{
-	if (format)
-		printf("handling integer %d\n", value);
-}
-
 void	handle_content(va_list ap, t_list *lst)
 {
-	t_format *format;
+	char		*strout;
+	t_format	*format;
 
 	format = (t_format *) lst->content;
+	strout = "";
 	if (format->specifier == 'd' || format->specifier == 'D')
-		handle_integer(format, va_arg(ap, int));
+		strout = handle_integer(format, va_arg(ap, int));
+	printf("strout: %s\n", strout);
 }

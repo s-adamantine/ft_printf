@@ -47,3 +47,4 @@ t_format	*init_format(void);
 
 void	print_format(t_format *format);
 void	handle_content(va_list ap, t_list *lst);
+char	*handle_integer(t_format *f, int value);

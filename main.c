@@ -61,12 +61,13 @@ int	ft_printf(const char *string, ...)
 
 int	main(void)
 {
-	int	i;
+	int		i;
+	double	d;
 	char	*str;
 
-	i = 5;
+	i = -5;
+	d = 3;
 	str = "21";
-	printf("testing original printf: %.d\n", i);
-	ft_printf("hello I'm testing three %2.d and %+3hhf\n", 23, 2.5);
+	ft_printf("hello I'm testing three %+5d and %+3hhf\n", 23, 2.5);
 	return (0);
 }
