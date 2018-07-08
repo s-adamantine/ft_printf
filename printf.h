@@ -41,11 +41,11 @@ typedef struct	s_format
 	t_type		type;
 }				t_format;
 
-int			parse_input(t_list **lst, char *string);
+int			parse_input(va_list ap, char *string);
 void		error(int i);
 void		put_error(char *str);
 t_format	*init_format(void);
 
 void	print_format(t_format *format);
-void	handle_content(va_list ap, t_list *lst);
+char	*handle_content(va_list ap, t_format *format);
 char	*handle_integer(t_format *f, int value);

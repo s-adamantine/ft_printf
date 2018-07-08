@@ -52,17 +52,9 @@ t_format	*init_format(void)
 int	ft_printf(const char *string, ...)
 {
 	va_list		ap;
-	t_list		*lst;
 
-	lst = ft_lstnew(NULL, 0);
-	parse_input(&lst, (char *)string);
 	va_start(ap, string);
-	while (lst)
-	{
-		// print_format(lst->content);
-		handle_content(ap, lst);
-		lst = lst->next;
-	}
+	parse_input(ap, (char *)string);
 	va_end(ap);
 	return (1);
 }
@@ -77,6 +69,6 @@ int	main(void)
 	d = 3;
 	str = "21";
 	printf("testing the original: %-d\n", -23);
-	ft_printf("hello I'm testing three %-d\n", -23);
+	ft_printf("testing my own: %-d\n", -23);
 	return (0);
 }
