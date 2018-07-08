@@ -43,6 +43,7 @@ typedef struct	s_format
 
 int			parse_input(t_list **lst, char *string);
 void		error(int i);
+void		put_error(char *str);
 t_format	*init_format(void);
 
 void	print_format(t_format *format);

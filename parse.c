@@ -138,7 +138,7 @@ int			parse_input(t_list **lst, char *string)
 				ft_lstappend(lst, newlink);
 			}
 		}
-		ft_putchar(*string);
+		// ft_putchar(*string);
 		string++;
 	}
 	return (0);

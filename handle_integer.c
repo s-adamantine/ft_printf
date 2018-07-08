@@ -12,50 +12,54 @@
 
 #include "printf.h"
 
-// static char	*pad_left(t_format *f)
-// {
-// 	while (width - ft_numlen(value) > 0 && f->flag->minus == 0)
-// 	{
-// 		if (f->flag->minus == 0)
-// 			out[i++] = (f->flag->zero == 1) ? '0' : ' ';
-// 		width--;
-// 	}
-// 	while (width && *num)
-// 		out[i++] = *num++;
-// }
-
-char	*get_integer_value(t_format *f, int value)
+static void	left_justify(t_format *f, char *str, int value)
 {
-	if (f->flag->plus == 1 && value > 0)
-		return (ft_strjoin("+", ft_itoa(value)));
-	else
-		return (ft_itoa(value));
+	char	*num;
+
+	num = ft_itoa(value);
+	(f->flag->plus && value > 0) ? *str++ = '+' : 0;
+	while (*num)
+		*str++ = *num++;
 }
 
-// current progress: did right justification, now to do left
+static void	right_justify(t_format *f, char *str, int value)
+{
+	char	*num;
+
+	num = ft_itoa_abs(value);
+	if (f->flag->plus)
+	{
+		str += (f->flag->zero) ? 0 : ft_strlen(str) - ft_strlen(num) - 1;
+		*str = (value > 0) ? '+' : '-';
+		str += (f->flag->zero) ? ft_strlen(str) - ft_strlen(num) : 1;
+	}
+	while (*num)
+		*str++ = *num++;
+}
+
+static void	errorcheck_integer(t_format *f)
+{
+	if (f->flag->minus && f->flag->zero)
+		put_error("Flag '0' is ignored when flag '-' is present.");
+}
+
+/*
+** - : left justify, default is right justify
+** + : add a plus when positive
+** 0 : pad with 0s instead of with spaces
+*/
 char	*handle_integer(t_format *f, int value)
 {
 	int		i;
 	int		width;
 	char	*out;
-	char	*num;
 
 	i = 0;
+	errorcheck_integer(f);
 	width = (ft_numlen(value) > f->width) ? ft_numlen(value) : f->width;
-	width += (f->flag->plus == 1) ? 1 : 0; //haven't tested this yet
-	out = ft_memalloc(sizeof(char) * width);
-	num = get_integer_value(f, value);
-	//start dealing with padding
-	//left justification, could probably be reused later
-	printf("width is %d\n", width);
-	//need to write this function for when there's a right justification
-	while (width - ft_strlen(num) > 0 && f->flag->minus == 0)
-	{
-		if (f->flag->minus == 0)
-			out[i++] = (f->flag->zero == 1) ? '0' : ' ';
-		width--;
-	}
-	while (width && *num)
-		out[i++] = *num++;
+	width += (f->flag->plus && (width == ft_numlen(value))) ? 1 : 0;
+	out = ft_memalloc(sizeof(char) * (width + 1)); //+1 for backslash zero?
+	(f->flag->zero) ? ft_strfill(out, width, '0') : ft_strfill(out, width, ' ');
+	(f->flag->minus) ? left_justify(f, out, value) : right_justify(f, out, value);
 	return (out);
 }

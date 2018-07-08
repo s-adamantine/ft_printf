@@ -16,6 +16,14 @@ void	error(int i)
 {
 	if (i == 1)
 		ft_putendl_fd("Error: memory not allocated.\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+void	put_error(char *str)
+{
+	ft_putstr_fd("Error: ", 2);
+	ft_putendl_fd(str, 2);
+	exit(EXIT_FAILURE);
 }
 
 t_format	*init_format(void)
@@ -68,6 +76,7 @@ int	main(void)
 	i = -5;
 	d = 3;
 	str = "21";
-	ft_printf("hello I'm testing three %+5d and %+3hhf\n", 23, 2.5);
+	printf("testing the original: %-d\n", -23);
+	ft_printf("hello I'm testing three %-d\n", -23);
 	return (0);
 }
