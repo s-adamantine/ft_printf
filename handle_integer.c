@@ -26,12 +26,17 @@ static void	right_justify(t_format *f, char *str, int value)
 {
 	char	*num;
 
-	num = ft_itoa_abs(value);
 	if (f->flag->plus)
 	{
+		num = ft_itoa_abs(value);
 		str += (f->flag->zero) ? 0 : ft_strlen(str) - ft_strlen(num) - 1;
 		*str = (value > 0) ? '+' : '-';
 		str += (f->flag->zero) ? ft_strlen(str) - ft_strlen(num) : 1;
+	}
+	else
+	{
+		num = ft_itoa(value);
+		str += ft_strlen(str) - ft_strlen(num);
 	}
 	while (*num)
 		*str++ = *num++;
