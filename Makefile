@@ -11,15 +11,14 @@
 # **************************************************************************** #
 
 NAME = printf
-LIBNAME = libprintf.a
-LIBS = -L. -lprintf -L libft/ -lft
+LIBNAME = libftprintf.a
+LIBS = -L. -lftprintf -L libft/ -lft
 
 SUBLIB_DIR = libft
 
 SUBLIB = libft/libft.a
 
 LIBNAME1 = libft.a
-LIBNAME2 = libmlx.a
 
 SRC = main.c parse.c testing_helpers.c\
 	handle_content.c\
@@ -43,7 +42,7 @@ libft:
 
 $(NAME): libft $(OBJ)
 	@ar -rc $(LIBNAME) $(OBJ)
-	@$(CC) $(LIBS) $(FRAMEWORK) -o $(NAME)
+	@$(CC) $(LIBS) -o $(NAME)
 
 clean:
 	@$(MAKE) clean -C $(SUBLIB_DIR)
@@ -52,7 +51,7 @@ clean:
 fclean: clean
 	@$(MAKE) fclean -C $(SUBLIB_DIR)
 	@rm -rf $(NAME)
-	@rm -rf $(LIB)
+	@rm -rf $(LIBNAME)
 
 re: fclean all
 
