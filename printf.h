@@ -49,3 +49,4 @@ t_format	*init_format(void);
 void	print_format(t_format *format);
 char	*handle_content(va_list ap, t_format *format);
 char	*handle_integer(t_format *f, int value);
+char	*handle_string(t_format *f, char *str);

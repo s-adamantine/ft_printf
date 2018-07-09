@@ -30,10 +30,12 @@ static char		*parse_flag(t_format *format, char *str)
 
 static char		*parse_width(t_format *format, char *str)
 {
-	format->width = ft_atoi(str);
-	if (format->width == 0)
-		return (str);
-	return (str + ft_numlen(format->width));
+	if (ft_isdigit(*str))
+	{
+		format->width = ft_atoi(str);
+		return (str + ft_numlen(format->width));		
+	}
+	return (str);
 }
 
 static char		*parse_length(t_format *format, char *str)

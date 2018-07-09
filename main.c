@@ -38,8 +38,8 @@ t_format	*init_format(void)
 	format->flag->minus = 0;
 	format->flag->hash = 0;
 	format->flag->zero = 0;
-	format->width = 0;
-	format->precision = 0;
+	format->width = -1;
+	format->precision = -1;
 	format->specifier = '0';
 	format->length = '0';
 	format->value = NULL;
@@ -47,8 +47,6 @@ t_format	*init_format(void)
 	return (format);
 }
 
-// need to create a function initializing all the formats
-// need to instantiate a list of formats
 int	ft_printf(const char *string, ...)
 {
 	va_list		ap;
@@ -65,10 +63,10 @@ int	main(void)
 	double	d;
 	char	*str;
 
-	i = -5;
+	i = 3242;
 	d = 3;
-	str = "21";
-	printf("testing the original: %-d\n", -23);
-	ft_printf("testing my own: %-d\n", -23);
+	str = "Hello me name is sharfy";
+	printf("testing the original: %25s\n", str);
+	ft_printf("testing my own: %25s\n", str);
 	return (0);
 }

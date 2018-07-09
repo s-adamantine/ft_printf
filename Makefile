@@ -24,6 +24,7 @@ LIBNAME2 = libmlx.a
 SRC = main.c parse.c testing_helpers.c\
 	handle_content.c\
 	handle_integer.c\
+	handle_string.c\
 
 OBJ = $(SRC:.c=.o)
 

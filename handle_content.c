@@ -19,5 +19,7 @@ char	*handle_content(va_list ap, t_format *format)
 	strout = "";
 	if (format->specifier == 'd')
 		strout = handle_integer(format, va_arg(ap, int));
+	if (format->specifier == 's')
+		strout = handle_string(format, va_arg(ap, char *));
 	return (strout);
 }
