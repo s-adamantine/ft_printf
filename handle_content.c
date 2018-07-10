@@ -17,7 +17,7 @@ char	*handle_content(va_list ap, t_format *format)
 	char		*strout;
 
 	strout = "";
-	if (format->specifier == 'd')
+	if (format->specifier == 'd' || format->specifier == 'i')
 		strout = handle_integer(format, va_arg(ap, int));
 	if (format->specifier == 's')
 		strout = handle_string(format, va_arg(ap, char *));

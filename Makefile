@@ -20,7 +20,7 @@ SUBLIB = libft/libft.a
 
 LIBNAME1 = libft.a
 
-SRC = main.c parse.c testing_helpers.c\
+SRC = printf.c parse.c testing_helpers.c\
 	handle_content.c\
 	handle_integer.c\
 	handle_string.c\
