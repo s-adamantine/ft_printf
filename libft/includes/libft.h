@@ -97,6 +97,7 @@ int					ft_strendsw(char *big, char *small);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_arrlen(char **arr);
 int					ft_numlen(int num);
+int					ft_numlen_abs(int num);
 int					ft_factorial(int nb);
 int					ft_wordcount(char const *s, char c);
 t_list				*ft_lstnew(void const *content, size_t content_size);

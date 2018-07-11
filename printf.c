@@ -63,10 +63,10 @@ int	main(void)
 	double	d;
 	char	*str;
 
-	i = 3242;
+	i = -16;
 	d = 3;
 	str = "Hello me name is sharfy";
-	printf("testing the original: %.0d", i);
-	ft_printf("testing my own: %.0d", i);
+	printf("testing the original: %+.3d\n", i);
+	ft_printf("testing my own: %+.3d\n", i);
 	return (0);
 }
