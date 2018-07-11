@@ -66,7 +66,7 @@ int	main(void)
 	i = 3242;
 	d = 3;
 	str = "Hello me name is sharfy";
-	printf("testing the original: %-1.1d\n", i);
-	ft_printf("testing my own: %-1.1d\n", i);
+	printf("testing the original: %.0d", i);
+	ft_printf("testing my own: %.0d", i);
 	return (0);
 }

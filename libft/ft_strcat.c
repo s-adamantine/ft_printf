@@ -12,11 +12,24 @@
 
 #include "libft.h"
 
+/*
+** Concatenates source into dest, where dest has to have the available
+** space necessary.
+** If either dest or src is NULL, then it returns the other (assuming
+** it's not null.)
+*/
+
 char	*ft_strcat(char *dest, const char *src)
 {
 	int i;
 
 	i = 0;
+	if (!dest)
+		return ((char *) src);
+	if (!src)
+		return (dest);
+	if (!dest && !src)
+		return (NULL);
 	while (dest[i])
 		i++;
 	while (*src)

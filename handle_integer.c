@@ -39,6 +39,8 @@ static void	right_justify(t_format *f, char *str, int value)
 		num = ft_memalloc(sizeof(char) * (f->precision - ft_numlen(value) + 1));
 		ft_strfill(num, f->precision - ft_numlen(value), '0');
 	}
+	else
+		num = NULL;
 	if (f->flag->plus)
 	{
 		num = ft_strcat(num, ft_itoa_abs(value));

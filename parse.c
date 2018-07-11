@@ -33,7 +33,7 @@ static char		*parse_width(t_format *format, char *str)
 	if (ft_isdigit(*str))
 	{
 		format->width = ft_atoi(str);
-		return (str + ft_numlen(format->width));		
+		return (str + ft_numlen(format->width));
 	}
 	return (str);
 }
@@ -68,8 +68,6 @@ static char		*parse_precision(t_format *format, char *str)
 	while (*str && *str != '.' && !ft_strchr(specifiers, *str))
 		str++;
 	format->precision = ft_atoi(++str);
-	if (format->precision == 0)
-		return (str);
 	return (str + ft_numlen(format->precision));
 }
 
@@ -138,8 +136,7 @@ int			parse_input(va_list ap, char *string)
 				ft_putstr(handle_content(ap, format));
 			}
 		}
-		ft_putchar(*string);
-		string++;
+		(*string) ? ft_putchar(*string++): 0;
 	}
 	return (0);
 }
