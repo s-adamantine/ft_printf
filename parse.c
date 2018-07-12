@@ -23,6 +23,7 @@ static char		*parse_flag(t_format *format, char *str)
 		(*str == '+') ? format->flag->plus = 1 : 0;
 		(*str == '#') ? format->flag->hash = 1 : 0;
 		(*str == '0') ? format->flag->zero = 1 : 0;
+		(*str == ' ') ? format->flag->space = 1 : 0;
 		str++;
 	}
 	return (str);

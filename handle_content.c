@@ -19,6 +19,8 @@ char	*handle_content(va_list ap, t_format *format)
 	strout = "";
 	if (format->specifier == 'd' || format->specifier == 'i')
 		strout = handle_integer(format, va_arg(ap, int));
+	if (format->specifier == 'u' || format->specifier == 'U' || format->specifier == 'D')
+		strout = handle_unsignedint(format, va_arg(ap, unsigned int));
 	if (format->specifier == 's')
 		strout = handle_string(format, va_arg(ap, char *));
 	if (format->specifier == 'X')

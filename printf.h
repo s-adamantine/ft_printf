@@ -15,6 +15,7 @@
 # include <stdarg.h>
 # include "libft.h"
 # include <stdio.h> //get rid
+# include <limits.h>
 
 typedef enum	e_type
 {
@@ -28,6 +29,7 @@ typedef struct	s_flag
 	int			plus;
 	int			hash;
 	int			zero;
+	int			space;
 }				t_flag;
 
 typedef struct	s_format
@@ -50,6 +52,7 @@ t_format	*init_format(void);
 void	print_format(t_format *format);
 char	*handle_content(va_list ap, t_format *format);
 char	*handle_integer(t_format *f, int value);
+char	*handle_unsignedint(t_format *f, unsigned int value);
 char	*handle_string(t_format *f, char *str);
 char	*handle_upperhexa(t_format *f, int value);
 char	*handle_character(t_format *f, unsigned int c);

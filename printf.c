@@ -48,6 +48,7 @@ t_format	*init_format(void)
 	format->flag->minus = 0;
 	format->flag->hash = 0;
 	format->flag->zero = 0;
+	format->flag->space = 0;
 	format->width = -1;
 	format->precision = -1;
 	format->specifier = '0';
@@ -74,11 +75,11 @@ int	main(void)
 	char	c;
 	char	*str;
 
-	i = 23;
+	i = -312334324;
 	d = 3;
 	c = 'a';
 	str = "Hello me name is sharfy";
-	printf("testing the original : %7.C\n", c);
-	ft_printf("testing ft_printf    : %7.C\n", c);
+	printf("testing the original : %-1D\n", i);
+	ft_printf("testing ft_printf    : %-1D\n", i);
 	return (0);
 }

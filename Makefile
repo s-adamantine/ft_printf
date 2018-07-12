@@ -6,7 +6,7 @@
 #    By: sadamant <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:53:44 by sadamant          #+#    #+#              #
-#    Updated: 2017/12/28 19:53:45 by sadamant         ###   ########.fr        #
+#    Updated: 2018/07/12 18:38:36 by sadamant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ LIBNAME1 = libft.a
 SRC = printf.c parse.c testing_helpers.c\
 	handle_content.c\
 	handle_integer.c\
+	handle_unsignedint.c\
 	handle_string.c\
 	handle_upperhexa.c\
 	handle_character.c\

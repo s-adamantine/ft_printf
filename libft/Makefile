@@ -6,7 +6,7 @@
 #    By: sadamant <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/09 06:18:48 by sadamant          #+#    #+#              #
-#    Updated: 2018/07/07 15:24:45 by sadamant         ###   ########.fr        #
+#    Updated: 2018/07/12 19:39:04 by sadamant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_tolower.c ft_toupper.c ft_pow.c ft_atof.c ft_itoa_abs.c ft_itoa_base.c\
 	  ft_arrlen.c ft_strendsw.c ft_ishexa.c ft_freedarray.c\
 	  vsub.c vadd.c vmag.c vdot.c v3new.c vnorm.c\
-	  ft_rgb.c \
+	  ft_rgb.c ft_uitoa.c ft_unumlen.c\
 	  matnew.c \
 	  get_next_line.c
 
