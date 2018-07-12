@@ -51,6 +51,8 @@ static void	errorcheck_integer(t_format *f)
 {
 	if (f->flag->minus && f->flag->zero)
 		put_error("Flag '0' is ignored when flag '-' is present.");
+	if (f->flag->hash)
+		error_undefined('#', 'd');
 }
 
 /*

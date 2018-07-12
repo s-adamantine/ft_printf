@@ -36,7 +36,7 @@ static void	right_justify(t_format *f, char *str, int value)
 static void	errorcheck_hexa(t_format *f)
 {
 	if (f->flag->plus)
-		put_error("Flag '+' results in undefined behavior with 'X' conversion specifier");
+		error_undefined('+', 'X');
 }
 /*
 ** '-' : left justify

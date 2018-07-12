@@ -12,6 +12,16 @@
 
 #include "printf.h"
 
+void	error_undefined(char flag, char specifier)
+{
+	ft_putstr_fd("Error: Flag '", 2);
+	ft_putchar_fd(flag, 2);
+	ft_putstr_fd("' results in undefined behavior with '", 2);
+	ft_putchar_fd(specifier, 2);
+	ft_putstr_fd("' conversion specifier\n", 2);
+	exit(EXIT_FAILURE);
+}
+
 void	error(int i)
 {
 	if (i == 1)
@@ -66,7 +76,7 @@ int	main(void)
 	i = 255;
 	d = 3;
 	str = "Hello me name is sharfy";
-	printf("testing the original: %03X\n", i);
-	ft_printf("testing my own: %03X\n", i);
+	printf("testing the original: %#0X\n", i);
+	ft_printf("testing my own: %#0X\n", i);
 	return (0);
 }

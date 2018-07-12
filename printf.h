@@ -44,6 +44,7 @@ typedef struct	s_format
 int			parse_input(va_list ap, char *string);
 void		error(int i);
 void		put_error(char *str);
+void		error_undefined(char flag, char specifier);
 t_format	*init_format(void);
 
 void	print_format(t_format *format);
