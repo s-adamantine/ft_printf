@@ -15,15 +15,18 @@
 /*
 ** Pads extra zeros as required by precision.
 */
-char	*allocate_precision_overfill(t_format *f, int numlen)
+char	*precision_overfill(t_format *f, int numlen)
 {
+	int		overfill;
 	char	*num;
 
+	overfill = 0;
 	num = NULL;
 	if (f->precision > numlen)
 	{
-		num = ft_memalloc(sizeof(char) * (f->precision - numlen + 1));
-		ft_strfill(num, f->precision - numlen, '0');
+		overfill = f->precision - numlen;
+		num = ft_memalloc(sizeof(char) * (overfill + 1));
+		ft_strfill(num, overfill, '0');
 	}
 	return (num);
 }

@@ -16,7 +16,7 @@ static void	left_justify(t_format *f, char *str, int value)
 {
 	char	*num;
 
-	num = allocate_precision_overfill(f, ft_numlen_abs(value));
+	num = precision_overfill(f, ft_numlen_abs(value));
 	num = ft_strcat(num, ft_itoa_abs(value));
 	if (f->flag->plus)
 		*str++ = (value > 0) ? '+' : '-';
@@ -30,7 +30,7 @@ static void	right_justify(t_format *f, char *str, int value)
 {
 	char	*num;
 
-	num = allocate_precision_overfill(f, ft_numlen_abs(value));
+	num = precision_overfill(f, ft_numlen_abs(value));
 	num = ft_strcat(num, ft_itoa_abs(value));
 	if (f->flag->plus)
 	{

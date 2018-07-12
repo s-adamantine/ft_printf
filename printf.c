@@ -73,10 +73,10 @@ int	main(void)
 	double	d;
 	char	*str;
 
-	i = 255;
+	i = 0;
 	d = 3;
 	str = "Hello me name is sharfy";
-	printf("testing the original: %#0X\n", i);
-	ft_printf("testing my own: %#0X\n", i);
+	printf("testing the original: %#9.5X\n", i);
+	ft_printf("testing my own: %#9.5X\n", i);
 	return (0);
 }
