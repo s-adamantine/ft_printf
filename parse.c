@@ -67,8 +67,12 @@ static char		*parse_precision(t_format *format, char *str)
 		return (str);
 	while (*str && *str != '.' && !ft_strchr(specifiers, *str))
 		str++;
-	format->precision = ft_atoi(++str);
-	return (str + ft_numlen(format->precision));
+	if (ft_isdigit(*++str))
+	{
+		format->precision = ft_atoi(str);
+		return (str + ft_numlen(format->precision));
+	}
+	return (str);
 }
 
 static char		*parse_specifier(t_format *format, char *str)

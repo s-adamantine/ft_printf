@@ -25,6 +25,7 @@ SRC = printf.c parse.c testing_helpers.c\
 	handle_integer.c\
 	handle_string.c\
 	handle_upperhexa.c\
+	handle_character.c\
 	handle_numtypes.c
 
 OBJ = $(SRC:.c=.o)

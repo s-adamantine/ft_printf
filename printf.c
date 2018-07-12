@@ -71,12 +71,14 @@ int	main(void)
 {
 	int		i;
 	double	d;
+	char	c;
 	char	*str;
 
-	i = 0;
+	i = 23;
 	d = 3;
+	c = 'a';
 	str = "Hello me name is sharfy";
-	printf("testing the original: %#9.5X\n", i);
-	ft_printf("testing my own: %#9.5X\n", i);
+	printf("testing the original : %7.C\n", c);
+	ft_printf("testing ft_printf    : %7.C\n", c);
 	return (0);
 }

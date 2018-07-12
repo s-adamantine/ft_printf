@@ -40,8 +40,8 @@ static void	right_justify(t_format *f, char *str, int value)
 	}
 	else
 	{
-		str += ft_strlen(str) - ft_strlen(num) - 1; //oh no this might segfault
-		*str++ = (value > 0) ? '+' : '-';
+		str += ft_strlen(str) - ft_strlen(num);
+		(value < 0) ? *str++ = '-' : 0;
 	}
 	while (*num)
 		*str++ = *num++;
