@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_content.c                                   :+:      :+:    :+:   */
+/*   ft_numlen_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadamant <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/07 07:51:38 by sadamant          #+#    #+#             */
-/*   Updated: 2018/07/07 07:52:06 by sadamant         ###   ########.fr       */
+/*   Created: 2018/07/11 00:56:53 by sadamant          #+#    #+#             */
+/*   Updated: 2018/07/11 00:57:05 by sadamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-char	*handle_content(va_list ap, t_format *format)
+/*
+** Gives the absolute numlength.
+*/
+int		ft_numlen_base(int num, int base)
 {
-	char		*strout;
+	int		len;
 
-	strout = "";
-	if (format->specifier == 'd' || format->specifier == 'i')
-		strout = handle_integer(format, va_arg(ap, int));
-	if (format->specifier == 's')
-		strout = handle_string(format, va_arg(ap, char *));
-	if (format->specifier == 'X')
-		strout = handle_upperhexa(format, va_arg(ap, int));
-	return (strout);
+	len = 0;
+	if (num == 0)
+		return (1);
+	num = (num < 0) ? -num : num;
+	while (num > 0)
+	{
+		len++;
+		num /= base;
+	}
+	return (len);
 }
