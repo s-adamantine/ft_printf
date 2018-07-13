@@ -24,7 +24,9 @@ char	*handle_content(va_list ap, t_format *format)
 	if (format->specifier == 's')
 		strout = handle_string(format, va_arg(ap, char *));
 	if (format->specifier == 'X')
-		strout = handle_upperhexa(format, va_arg(ap, int));
+		strout = handle_upperhexa(format, va_arg(ap, unsigned int));
+	if (format->specifier == 'x')
+		strout = ft_strtolower(handle_upperhexa(format, va_arg(ap, unsigned int)));
 	if (format->specifier == 'c' || format->specifier == 'C')
 		strout = handle_character(format, va_arg(ap, unsigned int));
 	return (strout);

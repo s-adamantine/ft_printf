@@ -12,6 +12,9 @@
 
 #include "libft.h"
 
+/*
+** the length of the number without a - if it's negative.
+*/
 int		ft_numlen_abs(int num)
 {
 	int len;

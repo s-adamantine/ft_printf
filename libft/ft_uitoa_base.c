@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolower.c                                    :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadamant <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 15:56:46 by sadamant          #+#    #+#             */
-/*   Updated: 2018/07/12 15:57:00 by sadamant         ###   ########.fr       */
+/*   Created: 2018/07/13 10:19:03 by sadamant          #+#    #+#             */
+/*   Updated: 2018/07/13 10:19:08 by sadamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strtolower(char *str)
+char	*ft_uitoa_base(unsigned int value, int base)
 {
-	int	i;
+	int				len;
+	char			*str;
+	int				times;
 
-	i = 0;
-	if (!str || !str[i])
-		return (NULL);
-	while (str[i])
+	str = NULL;
+	len = ft_unumlen_base(value, base);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	times = len;
+	str[len--] = '\0';
+	while (times--)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
+		if (value % base < 10)
+			str[len--] = value % base + '0';
+		else
+			str[len--] = value % base - 10 + 'A';
+		value /= base;
 	}
 	return (str);
 }

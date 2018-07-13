@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolower.c                                    :+:      :+:    :+:   */
+/*   ft_unumlen_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadamant <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/12 15:56:46 by sadamant          #+#    #+#             */
-/*   Updated: 2018/07/12 15:57:00 by sadamant         ###   ########.fr       */
+/*   Created: 2018/07/13 10:35:33 by sadamant          #+#    #+#             */
+/*   Updated: 2018/07/13 10:35:38 by sadamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtolower(char *str)
+int		ft_unumlen_base(unsigned int num, int base)
 {
-	int	i;
+	int		len;
 
-	i = 0;
-	if (!str || !str[i])
-		return (NULL);
-	while (str[i])
+	len = 0;
+	if (num == 0)
+		return (1);
+	while (num > 0)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
+		len++;
+		num /= base;
 	}
-	return (str);
+	return (len);
 }

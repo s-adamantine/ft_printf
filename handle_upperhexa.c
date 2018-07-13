@@ -12,24 +12,24 @@
 
 #include "printf.h"
 
-static void	left_justify(t_format *f, char *str, int value)
+static void	left_justify(t_format *f, char *str, unsigned int value)
 {
 	char	*num;
 
-	(f->flag->hash && value != 0) ? num = ft_strjoin("0X", num) : 0;
-	num = ft_strjoin(num, precision_overfill(f, ft_numlen_base(value, 16)));
-	num = ft_strjoin(num, ft_itoa_base(value, 16));
+	num = (f->flag->hash && value != 0) ? ft_strdup("0X") : ft_strdup("");
+	num = ft_strjoin(num, precision_overfill(f, ft_unumlen_base(value, 16)));
+	num = ft_strjoin(num, ft_uitoa_base(value, 16));
 	while (*num)
 		*str++ = *num++;
 }
 
-static void	right_justify(t_format *f, char *str, int value)
+static void	right_justify(t_format *f, char *str, unsigned int value)
 {
 	char	*num;
 
-	(f->flag->hash && value != 0) ? num = ft_strjoin("0X", num) : 0;
-	num = ft_strjoin(num, precision_overfill(f, ft_numlen_base(value, 16)));
-	num = ft_strjoin(num, ft_itoa_base(value, 16)); //this is where it's diff from integers
+	num = (f->flag->hash && value != 0) ? ft_strdup("0X") : ft_strdup("");
+	num = ft_strjoin(num, precision_overfill(f, ft_unumlen_base(value, 16)));
+	num = ft_strjoin(num, ft_uitoa_base(value, 16)); //this is where it's diff from integers
 	str += ft_strlen(str) - ft_strlen(num);
 	while (*num)
 		*str++ = *num++;
@@ -48,15 +48,14 @@ static void	errorcheck_hexa(t_format *f)
 ** . : the minimum number of digits to be written. if the value to be written is
 ** shorter than this number, then it's padded with leading zeros.
 */
-char	*handle_upperhexa(t_format *f, int value)
+char	*handle_upperhexa(t_format *f, unsigned int value)
 {
 	int		width;
 	int		numlen;
 	char	*out;
 
 	errorcheck_hexa(f);
-	numlen = (f->precision > ft_numlen_base(value, 16)) ? f->precision : ft_numlen_base(value, 16);
-	numlen += (value < 0 || f->flag->plus) ? 1 : 0;
+	numlen = (f->precision > ft_unumlen_base(value, 16)) ? f->precision : ft_unumlen_base(value, 16);
 	numlen += (f->flag->hash) ? 2 : 0;
 	width = (numlen > f->width) ? numlen : f->width;
 	out = ft_memalloc(sizeof(char) * (width + 1));

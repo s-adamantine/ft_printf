@@ -25,10 +25,12 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strfill.c\
 	  ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
 	  ft_numlen.c ft_numlen_base.c ft_lstappend.c\
+	  ft_strtolower.c\
 	  ft_tolower.c ft_toupper.c ft_pow.c ft_atof.c ft_itoa_abs.c ft_itoa_base.c\
 	  ft_arrlen.c ft_strendsw.c ft_ishexa.c ft_freedarray.c\
 	  vsub.c vadd.c vmag.c vdot.c v3new.c vnorm.c\
-	  ft_rgb.c ft_uitoa.c ft_unumlen.c\
+	  ft_rgb.c\
+	  ft_uitoa.c ft_uitoa_base.c ft_unumlen.c ft_unumlen_base.c\
 	  matnew.c \
 	  get_next_line.c
 

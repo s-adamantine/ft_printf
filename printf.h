@@ -54,6 +54,6 @@ char	*handle_content(va_list ap, t_format *format);
 char	*handle_integer(t_format *f, int value);
 char	*handle_unsignedint(t_format *f, unsigned int value);
 char	*handle_string(t_format *f, char *str);
-char	*handle_upperhexa(t_format *f, int value);
+char	*handle_upperhexa(t_format *f, unsigned int value);
 char	*handle_character(t_format *f, unsigned int c);
 char	*precision_overfill(t_format *f, int numlen);
