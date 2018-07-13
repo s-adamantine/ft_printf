@@ -29,5 +29,7 @@ char	*handle_content(va_list ap, t_format *format)
 		strout = ft_strtolower(handle_upperhexa(format, va_arg(ap, unsigned int)));
 	if (format->specifier == 'c' || format->specifier == 'C')
 		strout = handle_character(format, va_arg(ap, unsigned int));
+	if (format->specifier == 'o' || format->specifier == 'O')
+		strout = handle_octal(format, va_arg(ap, unsigned int));
 	return (strout);
 }

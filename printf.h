@@ -56,4 +56,5 @@ char	*handle_unsignedint(t_format *f, unsigned int value);
 char	*handle_string(t_format *f, char *str);
 char	*handle_upperhexa(t_format *f, unsigned int value);
 char	*handle_character(t_format *f, unsigned int c);
+char	*handle_octal(t_format *f, unsigned int value);
 char	*precision_overfill(t_format *f, int numlen);

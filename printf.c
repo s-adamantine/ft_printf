@@ -75,11 +75,11 @@ int	main(void)
 	char	c;
 	char	*str;
 
-	i = -255;
+	i = 25;
 	d = 3;
 	c = 'a';
 	str = "Hello me name is sharfy";
-	printf("testing the original : %0#4.X\n", i);
-	ft_printf("testing ft_printf    : %0#4.X\n", i);
+	printf("testing the original : %#6.3O\n", i);
+	ft_printf("testing ft_printf    : %#6.3O\n", i);
 	return (0);
 }

@@ -73,6 +73,8 @@ static char		*parse_precision(t_format *format, char *str)
 		format->precision = ft_atoi(str);
 		return (str + ft_numlen(format->precision));
 	}
+	else
+		format->precision = 0;
 	return (str);
 }
 

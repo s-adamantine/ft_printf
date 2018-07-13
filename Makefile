@@ -26,6 +26,7 @@ SRC = printf.c parse.c testing_helpers.c\
 	handle_unsignedint.c\
 	handle_string.c\
 	handle_upperhexa.c\
+	handle_octal.c\
 	handle_character.c\
 	handle_numtypes.c
 
