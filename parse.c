@@ -16,7 +16,7 @@ static char		*parse_flag(t_format *format, char *str)
 {
 	char	*flags;
 
-	flags = "+-#0";
+	flags = "+-#0 ";
 	while (ft_strchr(flags, *str))
 	{
 		(*str == '-') ? format->flag->minus = 1 : 0;
@@ -97,7 +97,7 @@ static int		valid_format(char *str)
 	char	*specifiers;
 	char	*lengths;
 
-	flags = "+-#0";
+	flags = "+-#0 ";
 	specifiers = "sSpdDioOuUxXcCfF";
 	lengths = "hljz";
 	if (!ft_isdigit(*str) && !ft_strchr(flags, *str) && *str != '.' &&

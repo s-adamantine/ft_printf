@@ -39,6 +39,8 @@ static void	errorcheck_hexa(t_format *f)
 {
 	if (f->flag->plus)
 		error_undefined('+', 'X');
+	if (f->flag->space)
+		error_undefined(' ', 'X');
 }
 /*
 ** '-' : left justify

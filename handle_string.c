@@ -15,9 +15,14 @@
 static void	errorcheck_string(t_format *f)
 {
 	if (f->flag->zero)
-		put_error("Flag '0' results in undefined behavior with 's' conversion specifier.");
+		error_undefined('0', 's');
 	if (f->flag->plus)
-		put_error("Flag '+' results in undefined behavior with 's' conversion specifier.");
+		error_undefined('+', 's');
+	if (f->flag->space)
+		error_undefined(' ', 's');
+	if (f->flag->hash)
+		error_undefined('#', 's');
+
 }
 
 /*

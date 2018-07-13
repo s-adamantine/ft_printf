@@ -79,7 +79,7 @@ int	main(void)
 	d = 3;
 	c = 'a';
 	str = "Hello me name is sharfy";
-	printf("testing the original : %11.10x\n", i);
-	ft_printf("testing ft_printf    : %11.10x\n", i);
+	printf("testing the original : %0#4.X\n", i);
+	ft_printf("testing ft_printf    : %0#4.X\n", i);
 	return (0);
 }

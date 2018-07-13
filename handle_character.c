@@ -20,6 +20,8 @@ static void	errorcheck_character(t_format *f)
 		error_undefined('+', 'c');
 	if (f->flag->zero)
 		error_undefined('0', 'c');
+	if (f->flag->space)
+		error_undefined(' ', 'c');
 	if (f->precision > 0)
 		put_error("Error: precision used with 'c' conversion specifier, resulting in undefined behavior.");
 }

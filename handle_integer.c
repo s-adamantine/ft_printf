@@ -20,6 +20,8 @@ static void	left_justify(t_format *f, char *str, int value)
 	num = ft_strcat(num, ft_itoa_abs(value));
 	if (f->flag->plus)
 		*str++ = (value > 0) ? '+' : '-';
+	else if (f->flag->space)
+		*str++ = (value > 0) ? ' ' : '-';
 	else
 		(value < 0) ? *str++ = '-' : 0;
 	while (*num)
@@ -32,15 +34,18 @@ static void	right_justify(t_format *f, char *str, int value)
 
 	num = precision_overfill(f, ft_numlen_abs(value));
 	num = ft_strcat(num, ft_itoa_abs(value));
-	if (f->flag->plus)
+	if (f->flag->plus || f->flag->space)
 	{
 		str += (f->flag->zero && f->precision == -1) ? 0 : ft_strlen(str) - ft_strlen(num) - 1;
-		*str = (value > 0) ? '+' : '-';
+		if (f->flag->plus)
+			*str = (value > 0) ? '+' : '-';
+		else if (f->flag->space)
+			*str = (value > 0) ? ' ' : '-';
 		str += (f->flag->zero && f->precision == -1) ? ft_strlen(str) - ft_strlen(num) : 1;
 	}
 	else
 	{
-		str += ft_strlen(str) - ft_strlen(num);
+		str += ft_strlen(str) - ft_strlen(num) - 1; // -1 is necessary for the sign
 		(value < 0) ? *str++ = '-' : 0;
 	}
 	while (*num)
@@ -70,10 +75,11 @@ char	*handle_integer(t_format *f, int value)
 
 	errorcheck_integer(f);
 	numlen = (f->precision > ft_numlen_abs(value)) ? f->precision : ft_numlen_abs(value);
-	numlen += (value < 0 || f->flag->plus) ? 1 : 0;
+	numlen += (value < 0 || f->flag->plus || f->flag->space) ? 1 : 0;
 	width = (numlen > f->width) ? numlen : f->width;
 	out = ft_memalloc(sizeof(char) * (width + 1)); //+1 for backslash zero?
 	(f->flag->zero && f->precision == -1) ? ft_strfill(out, width, '0') : ft_strfill(out, width, ' ');
+	printf("str: %s\n", out);
 	(f->flag->minus) ? left_justify(f, out, value) : right_justify(f, out, value);
 	return (out);
 }
