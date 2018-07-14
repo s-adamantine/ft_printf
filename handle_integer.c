@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-static void	left_justify(t_format *f, char *str, int value)
+static void	left_justify(t_format *f, char *str, intmax_t value)
 {
 	char	*num;
 
@@ -28,7 +28,8 @@ static void	left_justify(t_format *f, char *str, int value)
 		*str++ = *num++;
 }
 
-static void	right_justify(t_format *f, char *str, int value)
+// why doesn't this work with ft_itoa_base?
+static void	right_justify(t_format *f, char *str, intmax_t value)
 {
 	char	*num;
 
@@ -45,8 +46,12 @@ static void	right_justify(t_format *f, char *str, int value)
 	}
 	else
 	{
-		str += ft_strlen(str) - ft_strlen(num) - 1; // -1 is necessary for the sign
-		(value < 0) ? *str++ = '-' : 0;
+		str += ft_strlen(str) - ft_strlen(num); // -1 is necessary for the sign
+		if (value < 0)
+		{
+			str -= 1;
+			*str++ = '-';
+		}
 	}
 	while (*num)
 		*str++ = *num++;
@@ -67,7 +72,7 @@ static void	errorcheck_integer(t_format *f)
 ** . : maximum number of characters to be written. (pad with zeros)
 */
 
-char	*handle_integer(t_format *f, int value)
+char	*handle_integer(t_format *f, intmax_t value)
 {
 	int		width;
 	int		numlen;
@@ -79,7 +84,6 @@ char	*handle_integer(t_format *f, int value)
 	width = (numlen > f->width) ? numlen : f->width;
 	out = ft_memalloc(sizeof(char) * (width + 1)); //+1 for backslash zero?
 	(f->flag->zero && f->precision == -1) ? ft_strfill(out, width, '0') : ft_strfill(out, width, ' ');
-	printf("str: %s\n", out);
 	(f->flag->minus) ? left_justify(f, out, value) : right_justify(f, out, value);
 	return (out);
 }

@@ -68,18 +68,23 @@ int	ft_printf(const char *string, ...)
 	return (1);
 }
 
+/*
+** Current progress: 	Printf: Trying to implement lengths. At one point, I’d need to start converting the unsigned types (octals, hexes, and unsigned ints) into one large function, because at this point there are too many copy and pastes.
+	To do first thing tomorrow: Convert everything in ft_nums to intmax.
+*/
 int	main(void)
 {
-	int		i;
-	double	d;
-	char	c;
-	char	*str;
+	long long	i;
+	signed char	a;
+	double		d;
+	char		c;
+	char		*str;
 
-	i = 25;
+	i = -234234234298952625;
+	a = 's';
 	d = 3;
 	c = 'a';
 	str = "Hello me name is sharfy";
-	printf("testing the original : %#6.3O\n", i);
-	ft_printf("testing ft_printf    : %#6.3O\n", i);
-	return (0);
+	printf("testing the original : %21.3hhd\n", a);
+	ft_printf("testing ft_printf    : %21.3hhd\n", a);
 }

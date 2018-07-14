@@ -15,7 +15,7 @@
 /*
 ** Gives the absolute numlength.
 */
-int		ft_numlen_base(int num, int base)
+int		ft_numlen_base(intmax_t num, int base)
 {
 	int		len;
 

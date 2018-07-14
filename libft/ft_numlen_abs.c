@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 /*
 ** the length of the number without a - if it's negative.
 */
-int		ft_numlen_abs(int num)
+int		ft_numlen_abs(intmax_t num)
 {
 	int len;
 

@@ -17,29 +17,12 @@
 ** returns the absolute value of the number passed in to it.
 */
 
-static int	num_len(int n)
-{
-	int len;
-
-	len = 0;
-	if (n == 0)
-	{
-		return (1);
-	}
-	while (n != 0)
-	{
-		n = n / 10;
-		len++;
-	}
-	return (len);
-}
-
-char		*ft_itoa_abs(int n)
+char		*ft_itoa_abs(intmax_t n)
 {
 	int		len;
 	char	*res;
 
-	len = num_len(n);
+	len = ft_numlen_abs(n);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);

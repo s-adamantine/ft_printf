@@ -19,11 +19,11 @@
 ** minus sign (-). With any other base, value is always considered unsigned.
 */
 
-char	*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(intmax_t value, int base)
 {
 	int				len;
 	int				neg;
-	unsigned int	num;
+	uintmax_t		num;
 	char			*str;
 	int				times;
 

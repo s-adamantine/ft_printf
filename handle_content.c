@@ -12,13 +12,30 @@
 
 #include "printf.h"
 
+static intmax_t	integer_input(va_list ap, t_format *format)
+{
+	if (format->length == 'h') //short int
+		return (va_arg(ap, int));
+	if (format->length == 'H') //signed char
+		return (va_arg(ap, int));
+	if (format->length == 'z')
+		return (va_arg(ap, size_t));
+	if (format->length == 'l')
+		return (va_arg(ap, long));
+	if (format->length == 'L')
+		return (va_arg(ap, long long));
+	if (format->length == 'j')
+		return (va_arg(ap, intmax_t));
+	return (0);
+}
+
 char	*handle_content(va_list ap, t_format *format)
 {
 	char		*strout;
 
 	strout = "";
 	if (format->specifier == 'd' || format->specifier == 'i')
-		strout = handle_integer(format, va_arg(ap, int));
+		strout = handle_integer(format, integer_input(ap, format));
 	if (format->specifier == 'u' || format->specifier == 'U' || format->specifier == 'D')
 		strout = handle_unsignedint(format, va_arg(ap, unsigned int));
 	if (format->specifier == 's')
