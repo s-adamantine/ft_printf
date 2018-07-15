@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_uitoa_base(unsigned int value, int base)
+char	*ft_uitoa_base(uintmax_t value, int base)
 {
 	int				len;
 	char			*str;

@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-static void	left_justify(t_format *f, char *str, unsigned int value)
+static void	left_justify(t_format *f, char *str, uintmax_t value)
 {
 	char	*num;
 
@@ -22,7 +22,7 @@ static void	left_justify(t_format *f, char *str, unsigned int value)
 		*str++ = *num++;
 }
 
-static void	right_justify(t_format *f, char *str, unsigned int value)
+static void	right_justify(t_format *f, char *str, uintmax_t value)
 {
 	char	*num;
 
@@ -51,7 +51,7 @@ static void		errorcheck_unsignedint(t_format *f)
 ** looks like it follows the integer formatting exactly the same way, except that
 ** it doesn't take into account the numlen in the value calculation.
 */
-char			*handle_unsignedint(t_format *f, unsigned int value)
+char			*handle_unsignedint(t_format *f, uintmax_t value)
 {
 	int		numlen;
 	int		width;

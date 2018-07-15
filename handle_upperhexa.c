@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-static void	left_justify(t_format *f, char *str, unsigned int value)
+static void	left_justify(t_format *f, char *str, uintmax_t value)
 {
 	char	*num;
 
@@ -23,7 +23,7 @@ static void	left_justify(t_format *f, char *str, unsigned int value)
 		*str++ = *num++;
 }
 
-static void	right_justify(t_format *f, char *str, unsigned int value)
+static void	right_justify(t_format *f, char *str, uintmax_t value)
 {
 	char	*num;
 
@@ -50,7 +50,7 @@ static void	errorcheck_hexa(t_format *f)
 ** . : the minimum number of digits to be written. if the value to be written is
 ** shorter than this number, then it's padded with leading zeros.
 */
-char	*handle_upperhexa(t_format *f, unsigned int value)
+char	*handle_upperhexa(t_format *f, uintmax_t value)
 {
 	int		width;
 	int		numlen;

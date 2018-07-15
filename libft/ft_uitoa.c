@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char		*ft_uitoa(unsigned int n)
+char		*ft_uitoa(uintmax_t n)
 {
 	int		len;
 	char	*res;

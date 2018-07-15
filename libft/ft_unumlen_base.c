@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_unumlen_base(unsigned int num, int base)
+int		ft_unumlen_base(uintmax_t num, int base)
 {
 	int		len;
 

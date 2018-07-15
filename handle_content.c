@@ -26,9 +26,24 @@ static intmax_t	integer_input(va_list ap, t_format *format)
 		return (va_arg(ap, long long));
 	if (format->length == 'j')
 		return (va_arg(ap, intmax_t));
-	else
-		return (va_arg(ap, int));
-	return (0);
+	return (va_arg(ap, int));
+}
+
+static uintmax_t	uinteger_input(va_list ap, t_format *format)
+{
+	if (format->length == 'h') //short int
+		return (va_arg(ap, unsigned int));
+	if (format->length == 'H') //signed char
+		return (va_arg(ap, unsigned int));
+	if (format->length == 'z')
+		return (va_arg(ap, size_t));
+	if (format->length == 'l')
+		return (va_arg(ap, unsigned long));
+	if (format->length == 'L')
+		return (va_arg(ap, unsigned long long));
+	if (format->length == 'j')
+		return (va_arg(ap, uintmax_t));
+	return (va_arg(ap, unsigned int));
 }
 
 char	*handle_content(va_list ap, t_format *format)
@@ -39,16 +54,16 @@ char	*handle_content(va_list ap, t_format *format)
 	if (format->specifier == 'd' || format->specifier == 'i')
 		strout = handle_integer(format, integer_input(ap, format));
 	if (format->specifier == 'u' || format->specifier == 'U' || format->specifier == 'D')
-		strout = handle_unsignedint(format, va_arg(ap, unsigned int));
+		strout = handle_unsignedint(format, uinteger_input(ap, format));
 	if (format->specifier == 's')
 		strout = handle_string(format, va_arg(ap, char *));
 	if (format->specifier == 'X')
-		strout = handle_upperhexa(format, va_arg(ap, unsigned int));
+		strout = handle_upperhexa(format, uinteger_input(ap, format));
 	if (format->specifier == 'x')
-		strout = ft_strtolower(handle_upperhexa(format, va_arg(ap, unsigned int)));
+		strout = ft_strtolower(handle_upperhexa(format, uinteger_input(ap, format)));
 	if (format->specifier == 'c' || format->specifier == 'C')
-		strout = handle_character(format, va_arg(ap, unsigned int));
+		strout = handle_character(format, uinteger_input(ap, format));
 	if (format->specifier == 'o' || format->specifier == 'O')
-		strout = handle_octal(format, va_arg(ap, unsigned int));
+		strout = handle_octal(format, uinteger_input(ap, format));
 	return (strout);
 }

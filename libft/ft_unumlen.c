@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int	ft_unumlen(unsigned int n)
+int	ft_unumlen(uintmax_t n)
 {
    int len;
 

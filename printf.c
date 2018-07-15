@@ -84,8 +84,8 @@ int	ft_printf(const char *string, ...)
 // 	d = 3;
 // 	c = 'a';
 // 	str = "Hello me name is sharfy";
-// 	retor = printf("%s", "this is a string");
-// 	retmine = ft_printf("%s", "this is a string");
+// 	retor = printf("%d\n", i);
+// 	retmine = ft_printf("%d\n", i);
 // 	printf("rets: original: %d, mine: %d\n", retor, retmine);
 // 	return (0);
 // }
