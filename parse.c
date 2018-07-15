@@ -123,7 +123,7 @@ static int		valid_format(char *str)
 // needs to make sure that there's a specifier in there somewhere or you shouldn't
 // initialize a new format.
 // need to create a function that grabs one format specifier
-int			parse_input(va_list ap, char *string)
+int			parse_input(va_list ap, char *string, int *charswritten)
 {
 	t_format	*format;
 
@@ -141,9 +141,12 @@ int			parse_input(va_list ap, char *string)
 				string = parse_length(format, string);
 				string = parse_specifier(format, string);
 				ft_putstr(handle_content(ap, format));
+				*charswritten += format->charswritten;
 			}
 		}
+		(*string) ? *charswritten = *charswritten + 1 : 0;
 		(*string) ? ft_putchar(*string++): 0;
+
 	}
 	return (0);
 }

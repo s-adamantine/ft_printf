@@ -55,36 +55,37 @@ t_format	*init_format(void)
 	format->length = '0';
 	format->value = NULL;
 	format->type = 0;
+	format->charswritten = 0;
 	return (format);
 }
 
 int	ft_printf(const char *string, ...)
 {
 	va_list		ap;
+	int			charswritten;
 
+	charswritten = 0;
 	va_start(ap, string);
-	parse_input(ap, (char *)string);
+	parse_input(ap, (char *)string, &charswritten);
 	va_end(ap);
-	return (1);
+	return (charswritten);
 }
 
-/*
-** Current progress: 	Printf: Trying to implement lengths. At one point, I’d need to start converting the unsigned types (octals, hexes, and unsigned ints) into one large function, because at this point there are too many copy and pastes.
-	To do first thing tomorrow: Convert everything in ft_nums to intmax.
-*/
-int	main(void)
-{
-	long long	i;
-	signed char	a;
-	double		d;
-	char		c;
-	char		*str;
-
-	i = -234234234298952625;
-	a = 's';
-	d = 3;
-	c = 'a';
-	str = "Hello me name is sharfy";
-	printf("testing the original : %21.3hhd\n", a);
-	ft_printf("testing ft_printf    : %21.3hhd\n", a);
-}
+// int	main(void)
+// {
+// 	int		i;
+// 	double	d;
+// 	char	c;
+// 	char	*str;
+// 	int		retor;
+// 	int		retmine;
+//
+// 	i = -1;
+// 	d = 3;
+// 	c = 'a';
+// 	str = "Hello me name is sharfy";
+// 	retor = printf("%s", "this is a string");
+// 	retmine = ft_printf("%s", "this is a string");
+// 	printf("rets: original: %d, mine: %d\n", retor, retmine);
+// 	return (0);
+// }

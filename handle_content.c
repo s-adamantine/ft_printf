@@ -26,6 +26,8 @@ static intmax_t	integer_input(va_list ap, t_format *format)
 		return (va_arg(ap, long long));
 	if (format->length == 'j')
 		return (va_arg(ap, intmax_t));
+	else
+		return (va_arg(ap, int));
 	return (0);
 }
 

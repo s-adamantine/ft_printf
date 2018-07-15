@@ -51,5 +51,6 @@ char	*handle_string(t_format *f, char *str)
 	ft_strfill(out, width, ' ');
 	offset = (f->flag->minus) ? 0 : width - precision;
 	ft_strncpy(out +  offset, str, (size_t)precision);
+	f->charswritten = ft_strlen(out);
 	return (out);
 }

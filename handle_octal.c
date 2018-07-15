@@ -63,5 +63,6 @@ char	*handle_octal(t_format *f, unsigned int value)
 	out = ft_memalloc(sizeof(char) * (width + 1));
 	(f->flag->zero && f->precision == -1) ? ft_strfill(out, width, '0') : ft_strfill(out, width, ' ');
 	(f->flag->minus) ? left_justify(f, out, value) : right_justify(f, out, value);
+	f->charswritten = ft_strlen(out);
 	return (out);
 }

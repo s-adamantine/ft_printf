@@ -41,9 +41,15 @@ typedef struct	s_format
 	char		length;
 	void		*value;
 	t_type		type;
+	int			charswritten;
 }				t_format;
 
-int			parse_input(va_list ap, char *string);
+typedef struct	s_printf
+{
+	int			charcount;
+}				t_printf;
+
+int			parse_input(va_list ap, char *string, int *charswritten);
 void		error(int i);
 void		put_error(char *str);
 void		error_undefined(char flag, char specifier);
