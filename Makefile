@@ -10,15 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf
-LIBNAME = libftprintf.a
+EXEC = printf
+NAME = libftprintf.a
 LIBS = -L. -lftprintf -L libft/ -lft
 
-SUBLIB_DIR = libft
+SUBLIB_DIR = ./libft
 
 SUBLIB = libft/libft.a
 
-LIBNAME1 = libft.a
+LIBFT_A = libft.a
 
 SRC = printf.c parse.c testing_helpers.c\
 	handle_content.c\
@@ -46,8 +46,13 @@ libft:
 	@$(MAKE) -C $(SUBLIB_DIR)
 
 $(NAME): libft $(OBJ)
-	@ar -rc $(LIBNAME) $(OBJ)
-	@$(CC) $(LIBS) -o $(NAME)
+	@make -C $(SUBLIB_DIR)
+	@cp $(SUBLIB) .
+	@mv $(LIBFT_A) $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+#	@ar -rc $(NAME) $(OBJ) $(SUBLIB_DIR)/%.o
+#	@$(CC) $(LIBS) -o $(EXEC)
 
 clean:
 	@$(MAKE) clean -C $(SUBLIB_DIR)
@@ -56,7 +61,6 @@ clean:
 fclean: clean
 	@$(MAKE) fclean -C $(SUBLIB_DIR)
 	@rm -rf $(NAME)
-	@rm -rf $(LIBNAME)
 
 re: fclean all
 
