@@ -44,5 +44,6 @@ char	*handle_character(t_format *f, unsigned int c)
 		out[0] = c;
 	else
 		out[width - 1] = c;
+	f->charswritten = ft_strlen(out);
 	return (out);
 }
