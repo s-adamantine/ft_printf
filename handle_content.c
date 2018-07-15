@@ -14,10 +14,10 @@
 
 static intmax_t	integer_input(va_list ap, t_format *format)
 {
-	if (format->length == 'h') //short int
-		return (va_arg(ap, int));
-	if (format->length == 'H') //signed char
-		return (va_arg(ap, int));
+	if (format->length == 'h')
+		return ((short) va_arg(ap, int));
+	if (format->length == 'H')
+		return ((signed char) va_arg(ap, int));
 	if (format->length == 'z')
 		return (va_arg(ap, size_t));
 	if (format->length == 'l')
@@ -32,9 +32,9 @@ static intmax_t	integer_input(va_list ap, t_format *format)
 static uintmax_t	uinteger_input(va_list ap, t_format *format)
 {
 	if (format->length == 'h') //short int
-		return (va_arg(ap, unsigned int));
-	if (format->length == 'H') //signed char
-		return (va_arg(ap, unsigned int));
+		return ((short) va_arg(ap, unsigned int));
+	if (format->length == 'H')
+		return ((unsigned char)va_arg(ap, unsigned int));
 	if (format->length == 'z')
 		return (va_arg(ap, size_t));
 	if (format->length == 'l')
