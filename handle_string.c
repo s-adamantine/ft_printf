@@ -43,6 +43,8 @@ char	*handle_string(t_format *f, char *str)
 	errorcheck_string(f);
 	//assign precision if it exists
 	precision = (f->precision > -1) ? f->precision : len;
+	//overwrite old precision with the actual length if it's shorter
+	precision = (precision > len) ? len : precision;
 	//check initial width, untruncated
 	width = (f->width > len) ? f->width : len;
 	//check for truncated width.
@@ -50,8 +52,7 @@ char	*handle_string(t_format *f, char *str)
 	out = ft_memalloc(sizeof(char) * (width + 1));
 	ft_strfill(out, width, ' ');
 	offset = (f->flag->minus) ? 0 : width - precision;
-	// offset += (precision > len) ? precision - len : 0;
-	ft_strncpy(out +  offset, str, (size_t)precision);
+	ft_strncpy(out +  offset, str, (size_t)precision); //it tries to write into an offset, but it goes past.
 	f->charswritten = ft_strlen(out);
 	return (out);
 }

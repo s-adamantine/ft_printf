@@ -74,6 +74,7 @@ int	ft_printf(const char *string, ...)
 // int	main(void)
 // {
 // 	int		i;
+// 	unsigned long	l;
 // 	double	d;
 // 	signed char	c;
 // 	char	*str;
@@ -81,12 +82,12 @@ int	ft_printf(const char *string, ...)
 // 	int		retmine;
 //
 // 	i = 128;
+// 	l = 4294967296;
 // 	d = 3;
 // 	c = 127;
 // 	str = "Hello me name is sharfy";
-// 	retor = printf("%5.9%is is a string%+#3.12%\n");
-// 	retmine = 0;
-// 	retmine = ft_printf("%5.9%is is a string%+#3.12%\n");
+// 	retor = printf("%5s is a string\n", "bananas are apples");
+// 	retmine = ft_printf("%5s is a string\n", "bananas are apples");
 // 	printf("rets: original: %d, mine: %d\n", retor, retmine);
 // 	return (0);
 // }

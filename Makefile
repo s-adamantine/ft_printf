@@ -68,7 +68,7 @@ re: fclean all
 
 .PHONY: all libft clean fclean re
 
-# # makefile with own main
+# # # makefile with own main
 # NAME = printf
 # LIBNAME = libftprintf.a
 # LIBS = -L. -lftprintf -L libft/ -lft
