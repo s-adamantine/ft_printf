@@ -63,4 +63,5 @@ char	*handle_string(t_format *f, char *str);
 char	*handle_upperhexa(t_format *f, uintmax_t value);
 char	*handle_character(t_format *f, unsigned int c);
 char	*handle_octal(t_format *f, uintmax_t value);
+char	*handle_percent(t_format *f);
 char	*precision_overfill(t_format *f, int numlen);

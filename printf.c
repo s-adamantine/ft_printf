@@ -75,17 +75,18 @@ int	ft_printf(const char *string, ...)
 // {
 // 	int		i;
 // 	double	d;
-// 	char	c;
+// 	signed char	c;
 // 	char	*str;
 // 	int		retor;
 // 	int		retmine;
 //
-// 	i = -1;
+// 	i = 128;
 // 	d = 3;
-// 	c = 'a';
+// 	c = 127;
 // 	str = "Hello me name is sharfy";
-// 	retor = printf("%d\n", i);
-// 	retmine = ft_printf("%d\n", i);
+// 	retor = printf("%5.9%is is a string%+#3.12%\n");
+// 	retmine = 0;
+// 	retmine = ft_printf("%5.9%is is a string%+#3.12%\n");
 // 	printf("rets: original: %d, mine: %d\n", retor, retmine);
 // 	return (0);
 // }

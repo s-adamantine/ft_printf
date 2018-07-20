@@ -82,7 +82,7 @@ static char		*parse_specifier(t_format *format, char *str)
 {
 	char	*specifiers;
 
-	specifiers = "sSpdDioOuUxXcCfF";
+	specifiers = "%sSpdDioOuUxXcCfF";
 	if (ft_strchr(specifiers, *str))
 		format->specifier = *str;
 	return (str + 1);
@@ -100,10 +100,10 @@ static int		valid_format(char *str)
 	char	*lengths;
 
 	flags = "+-#0 ";
-	specifiers = "sSpdDioOuUxXcCfF";
+	specifiers = "%sSpdDioOuUxXcCfF";
 	lengths = "hljz";
 	if (!ft_isdigit(*str) && !ft_strchr(flags, *str) && *str != '.' &&
-		!ft_strchr(specifiers, *str) && !ft_strchr(lengths, *str))
+		!ft_strchr(specifiers, *str) && !ft_strchr(lengths, *str) && *str != '%') //double check this!
 		return (0);
 	while (ft_strchr(flags, *str))
 		str++;

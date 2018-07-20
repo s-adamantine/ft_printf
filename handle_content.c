@@ -65,5 +65,7 @@ char	*handle_content(va_list ap, t_format *format)
 		strout = handle_character(format, uinteger_input(ap, format));
 	if (format->specifier == 'o' || format->specifier == 'O')
 		strout = handle_octal(format, uinteger_input(ap, format));
+	if (format->specifier == '%')
+		strout = handle_percent(format);
 	return (strout);
 }

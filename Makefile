@@ -29,7 +29,8 @@ SRC = printf.c parse.c testing_helpers.c\
 	handle_upperhexa.c\
 	handle_octal.c\
 	handle_character.c\
-	handle_numtypes.c
+	handle_numtypes.c\
+	handle_percent.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -67,7 +68,7 @@ re: fclean all
 
 .PHONY: all libft clean fclean re
 
-#makefile with own main
+# # makefile with own main
 # NAME = printf
 # LIBNAME = libftprintf.a
 # LIBS = -L. -lftprintf -L libft/ -lft
@@ -86,7 +87,8 @@ re: fclean all
 # 	handle_upperhexa.c\
 # 	handle_octal.c\
 # 	handle_character.c\
-# 	handle_numtypes.c
+# 	handle_numtypes.c\
+# 	handle_percent.c
 #
 # OBJ = $(SRC:.c=.o)
 #
